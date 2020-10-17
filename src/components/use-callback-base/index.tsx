@@ -4,7 +4,7 @@ function UseCallbackBase() {
   const [first, setFirst] = useState(0);
   const [second, setSecond] = useState("가");
   const [third, setThird] = useState(false);
-
+  console.log("rendering");
   const initFn = useCallback(() => {
     return (
       <div>
@@ -59,7 +59,7 @@ function UseCallbackBase() {
   };
 
   const c = useCallback(() => {
-    console.log("hellow World" + first);
+    console.log("hello world" + first);
   }, [first]);
 
   useEffect(() => {
