@@ -2,13 +2,13 @@ import React from "react";
 
 import ContextGrandson from "./context-grandson";
 
-function PropsChildComponent({ formState, setFormState }: any) {
+function PropsChildComponent() {
   console.log("child Rendering");
 
   return (
     <div>
-      <h5>PropsChildComponent</h5>
-      <div>
+      <h5>Context Child Component</h5>
+      {/* <div>
         <p>State Change by first</p>
         <button
           onClick={() => {
@@ -49,12 +49,12 @@ function PropsChildComponent({ formState, setFormState }: any) {
           isBoolean Change
         </button>
         <p>isBoolean : {formState.isBoolean ? "TRUE" : "FALSE"}</p>
-      </div>
+      </div> */}
       <div>
-        <ContextGrandson formState={formState} setFormState={setFormState} />
+        <ContextGrandson />
       </div>
     </div>
   );
 }
 
-export default PropsChildComponent;
+export default React.memo(PropsChildComponent);

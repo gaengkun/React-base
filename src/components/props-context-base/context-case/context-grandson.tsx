@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 
-function ContextGrandson({ formState, setFormState }: any) {
+import { ContextCaseContext } from "./store";
+
+function ContextGrandson() {
   console.log("grandson Rendering");
+
+  const { testState, testAction } = useContext(ContextCaseContext);
+  const { formState } = testState;
+  const setFormState = testAction.setFormState!;
   return (
     <div>
-      <h5>Props Grandson Component</h5>
+      <h5>Context Grandson Component</h5>
       <div>
         <p>State Change by first</p>
         <button

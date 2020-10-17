@@ -1,10 +1,11 @@
 import React from "react";
 import { ContextCaseProvider } from "./store";
 
+import ContextParent from "./context-parent";
 export default () => {
   return (
     <ContextCaseProvider>
-      <div></div>
+      <ContextParent />
     </ContextCaseProvider>
   );
 };

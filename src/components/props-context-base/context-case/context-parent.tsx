@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useContext } from "react";
+
+import { ContextCaseContext } from "./store";
 
 import ChildComponent from "./context-child";
 import CousinComponent from "./context-cousin";
 function PropsParent() {
-  const [formState, setFormState] = useState({
-    first: 1,
-    second: "a",
-    isBoolean: false,
-  });
+  const { testState, testAction } = useContext(ContextCaseContext);
+
+  const { formState } = testState;
 
   const fetchData = useCallback(() => {
     console.log(formState);
@@ -19,9 +19,9 @@ function PropsParent() {
   console.log("parent Rendering");
   return (
     <div>
-      <h4>Props Parent</h4>
-      <CousinComponent formState={formState} setFormState={setFormState} />
-      <ChildComponent formState={formState} setFormState={setFormState} />
+      <h4>Context Parent</h4>
+      <CousinComponent />
+      <ChildComponent />
     </div>
   );
 }

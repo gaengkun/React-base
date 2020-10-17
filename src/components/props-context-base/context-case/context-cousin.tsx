@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ContextCaseContext } from "./store";
 
-function ContextCousinComponent({ formState, setFormState }: any) {
+function ContextCousinComponent() {
   console.log("cousin Rendering");
+
+  const { testState, testAction } = useContext(ContextCaseContext);
+
+  const { formState } = testState;
+  const setFormState = testAction.setFormState!;
 
   return (
     <div>
-      <h5>PropsCousinComponent</h5>
+      <h5>Context Cousin Component</h5>
       <div>
         <p>State Change by first</p>
         <button

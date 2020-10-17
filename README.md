@@ -34,6 +34,18 @@ import 순서
 7. 마지막 css, scss
    import './index.scss';
 
+8. 만약 Type을 선언한다면 Component 선언 전에
+   type StateType = {
+   formState: {
+   stringState: string;
+   numberState: number;
+   arrayState: Array<any>;
+   objState: {
+   [key:string]: string | number | Array<any> | null
+   }
+   }
+   }
+
 Component 내부 변수 선언
 
 1. props 구조분해
@@ -91,3 +103,32 @@ return (
 
 4. styledComponent
    const DalbitStyle = styled.div` display: flex;`
+
+참고사항.
+
+가능하다면 Component export시,
+export default () => {
+
+}
+형식 지양.
+->
+function Component() {
+
+}
+
+export default Component;
+
+무분별한 Props 사용금지. Props를 넘겨받지 않는 Component는 Props 삭제.
+
+State 값으로 0, 1, 2와 같은 Constant사용시...
+Constant 폴더 생성 후
+index.[ts|js] 안에
+export const STATE_TYPE = {
+ALL: 0,
+SOMETHING: 1
+...anything
+}
+와 같은 Constant 사용 권장
+이유는 본래의 작업자가 아닌 다른 작업자가 작업할시
+0, 1, 2처럼 사용하면 다른 작업자는 이해하는데 시간이 걸리지만
+Constant 를 사용하여 명확하게 0이 무엇인지, 1이 무엇인지 명시해두면 작업이 편함.

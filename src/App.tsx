@@ -1,10 +1,15 @@
 import React from "react";
 import "./App.css";
 
-import { NotGoodCase, UseStateCase, UseReducerCase } from "./components/many-state-base";
+import {
+  NotGoodCase,
+  UseStateCase,
+  UseReducerCase,
+} from "./components/many-state-base";
 import ParentComponent from "./components/pure-component-base/parent";
 import UseCallbackBase from "./components/use-callback-base";
 import PropsParent from "./components/props-context-base/props-case/props-parent";
+import ContextParent from "./components/props-context-base/context-case";
 function App() {
   return (
     <div className="App">
@@ -39,9 +44,10 @@ function App() {
       <div>
         <h3>Props vs Context</h3>
         <PropsParent />
+        <ContextParent />
       </div>
     </div>
   );
 }
 
-export default App;
+export default React.memo(App);
