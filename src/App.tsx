@@ -13,6 +13,8 @@ import ContextParent from "./components/props-context-base/context-case";
 import UseCallbackExpreince from "./components/what-use-callback";
 import ManyInputBaseComponent from "./components/many-input-base";
 import ManyInputInspectionComponent from "./components/many-input-base/many-input-inspection";
+
+import CustomHookTestComponent from "./components/custom-hook-base";
 function App() {
   return (
     <div className="App">
@@ -59,10 +61,13 @@ function App() {
         <h3>Many Input Guide</h3>
         <ManyInputBaseComponent />
       </div>
-      <div className="tit"></div>
       <div>
         <h3>Many Input Inspection Guide</h3>
         <ManyInputInspectionComponent />
+      </div>
+      <div>
+        <h3>Custom Hook Guide</h3>
+        <CustomHookTestComponent />
       </div>
     </div>
   );
