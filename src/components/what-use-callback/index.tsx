@@ -27,8 +27,18 @@ function UseCallbackExperience() {
     console.log(first);
   }, []);
 
+  const callbackInCallback = useCallback(() => {
+    /* 
+      useCallback 으로 감싼 함수에서 useCallback 으로 감싼 또 다른 함수를 호출하게되면
+      호출자가 Capture한 State만이 피호출자에서 변경을 감지할 수 있음.
+    */
+    console.log(second);
+  }, [first, second]);
+
   const firstCaptureFn = useCallback(() => {
     console.log(first);
+
+    callbackInCallback();
   }, [first]);
 
   const memosCaptureFn = useCallback(() => {
@@ -42,6 +52,10 @@ function UseCallbackExperience() {
     <div>
       <div>
         <p>Hello World</p>
+        <div>
+          <p>First : {first}</p>
+          <p>Second : {second}</p>
+        </div>
         <button
           onClick={() => {
             setFirst(Math.round(Math.random() * 10));

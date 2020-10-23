@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import useAsync from "./custom-hook-async";
+import axios from "axios";
 
 async function getPosts(page: number) {
   const response = await axios.get(
@@ -14,7 +14,7 @@ function CustomHookTestComponent() {
   const [state, refetch] = useAsync(() => getPosts(page), [page]);
   const { loading, data: posts, error } = state;
 
-  // if (loading) return <h4>loading .... </h4>;
+  if (loading) return <h4>loading .... </h4>;
   if (error) return <h4>Error! </h4>;
   if (!posts) return <button onClick={refetch}>불러오기</button>;
 
