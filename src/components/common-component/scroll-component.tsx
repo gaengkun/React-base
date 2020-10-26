@@ -34,7 +34,7 @@ async function getPosts(page: number) {
 
 function ScrollComponent() {
   const [state, dispatch] = useReducer(reducer, initial);
-  const [list, refetch] = useAsync(() => getPosts(state.page), [state.page]);
+  const [result, refetch] = useAsync(() => getPosts(state.page), [state.page]);
   const totalPage = 10;
 
   useEffect(() => {
@@ -55,9 +55,10 @@ function ScrollComponent() {
           html.offsetHeight
         );
         const windowBottom = windowHeight + window.pageYOffset;
-        if (didFetch === false && list.loading === false) {
+        if (didFetch === false && result.loading === false) {
           if (docHeight - commonDiff < windowBottom) {
             if (totalPage > state.page) {
+              console.log("pageUp");
               dispatch({
                 type: "PAGE",
               });
@@ -77,9 +78,9 @@ function ScrollComponent() {
 
       didFetch = true;
     };
-  }, [state, list]);
+  }, [state, result]);
 
-  if (list.error)
+  if (result.error)
     return (
       <div>
         error
@@ -91,8 +92,8 @@ function ScrollComponent() {
     <div>
       <h4>ScrollComponent</h4>
       <ul>
-        {list.data instanceof Array &&
-          list.data.map((v: any, idx: number) => {
+        {result.data instanceof Array &&
+          result.data.map((v: any, idx: number) => {
             return (
               <li key={idx}>
                 <p>{v.title}</p>
@@ -101,6 +102,7 @@ function ScrollComponent() {
             );
           })}
       </ul>
+      {result.loading === true && <h1>Loading ...</h1>}
     </div>
   );
 }
