@@ -16,6 +16,8 @@ import ManyInputBaseComponent from "./components/many-input-base";
 import ManyInputInspectionComponent from "./components/many-input-base/many-input-inspection";
 
 import CustomHookTestComponent from "./components/custom-hook-base";
+
+import ScrollComponent from "./components/common-component/scroll-component";
 function App() {
   return (
     <div className="App">
@@ -75,6 +77,10 @@ function App() {
       <div>
         <h3>Custom Hook Guide</h3>
         <CustomHookTestComponent />
+      </div>
+      <div className="tit">
+        <h3>Common Scroll Guide</h3>
+        <ScrollComponent />
       </div>
     </div>
   );

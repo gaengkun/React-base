@@ -54,13 +54,11 @@ const initialData = {
 
 function useAsync(callback: any, deps: Array<any> = [], skip = false) {
   const [state, dispatch] = useReducer(reducer, initialData);
-  console.log("here");
   const fetchData = useCallback(async () => {
     dispatch({ type: "LOADING" });
 
     try {
       const data = await callback();
-      console.log(state);
       if (state.data instanceof Array && state.data.length > 0) {
         dispatch({ type: "CONCAT", data: data });
       } else {
@@ -79,4 +77,4 @@ function useAsync(callback: any, deps: Array<any> = [], skip = false) {
   return [state, fetchData];
 }
 
-export default useAsync;
+export { useAsync };

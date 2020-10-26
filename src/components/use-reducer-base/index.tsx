@@ -1,16 +1,16 @@
 import React, { useReducer, useCallback } from "react";
 
-type StateType = {
-  first: number;
-  second: string;
-  third: boolean;
-  list: Array<any>;
-};
+// type StateType = {
+//   first: number;
+//   second: string;
+//   third: boolean;
+//   list: Array<any>;
+// };
 
-type ActionType = {
-  type: "FIRST" | "SECOND" | "THIRD" | "LIST";
-  data?: any;
-};
+// type ActionType = {
+//   type: "FIRST" | "SECOND" | "THIRD" | "LIST";
+//   data?: any;
+// };
 
 const initialValue = {
   first: 1,

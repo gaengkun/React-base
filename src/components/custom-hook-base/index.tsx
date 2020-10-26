@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useAsync from "./custom-hook-async";
+import { useAsync } from "./custom-hook-async";
 import axios from "axios";
 
 async function getPosts(page: number) {
