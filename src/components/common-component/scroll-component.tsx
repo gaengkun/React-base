@@ -58,7 +58,6 @@ function ScrollComponent() {
         if (didFetch === false && result.loading === false) {
           if (docHeight - commonDiff < windowBottom) {
             if (totalPage > state.page) {
-              console.log("pageUp");
               dispatch({
                 type: "PAGE",
               });
