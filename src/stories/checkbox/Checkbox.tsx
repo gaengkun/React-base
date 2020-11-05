@@ -24,6 +24,7 @@ export interface CheckboxProps {
    * Checkbox Label type Obejct
    * text: Label Text
    * id: Label Htmlfor
+   * position: Label position
    */
   label?: {
     text: string;

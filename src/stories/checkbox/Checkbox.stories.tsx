@@ -4,6 +4,8 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { CheckboxComponent, CheckboxProps } from "./Checkbox";
 
+import "./checkbox.css";
+
 export default {
   title: "Ui/Checkbox",
   component: CheckboxComponent,
@@ -24,6 +26,12 @@ Default.args = {
 
 Default.args = {
   status: false,
+  label: {
+    text: "text",
+    id: "checkbox",
+    position: "left",
+  },
+  size: 24,
 };
 
 export const Basic = () => {
@@ -86,13 +94,17 @@ export const MultiCheckbox = () => {
 
   return (
     <div>
-      <div>
-        <CheckboxComponent status={allChecked} callback={changeAllCheckStatus} />
+      <div className="allChecked">
+        <CheckboxComponent
+          status={allChecked}
+          callback={changeAllCheckStatus}
+          label={{ id: "allcheckebox", text: "All Check", position: "right" }}
+        />
       </div>
 
       {checkArray.map((v, i) => {
         return (
-          <div key={i}>
+          <div key={i} className="checkboxs">
             <CheckboxComponent
               status={v.checked}
               callback={() => changeCheckStatus(v.id)}

@@ -1,3 +1,33 @@
-.test {
-  color: white;
+.allChecked {
+  display: flex;
+  align-items: center;
+}
+
+.allChecked input[type="checkbox"] {
+  margin-right: 16px;
+}
+
+.allChecked input[type="checkbox"].on + label {
+  color: #632beb;
+}
+
+.allChecked label {
+  color: #bdbdbd;
+}
+
+.checkboxs {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxs input[type="checkbox"] {
+  margin-right: 16px;
+}
+
+.checkboxs input[type="checkbox"].on + label {
+  color: #632beb;
+}
+
+.checkboxs label {
+  color: #bdbdbd;
 }
