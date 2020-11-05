@@ -1,10 +1,11 @@
 .allChecked {
   display: flex;
   align-items: center;
+  margin: 10px;
 }
 
 .allChecked input[type="checkbox"] {
-  margin-right: 16px;
+  margin: 0;
 }
 
 .allChecked input[type="checkbox"].on + label {
@@ -12,16 +13,19 @@
 }
 
 .allChecked label {
+  cursor: pointer;
   color: #bdbdbd;
+  padding-left: 16px;
 }
 
 .checkboxs {
   display: flex;
   align-items: center;
+  margin: 10px;
 }
 
 .checkboxs input[type="checkbox"] {
-  margin-right: 16px;
+  margin: 0;
 }
 
 .checkboxs input[type="checkbox"].on + label {
@@ -29,5 +33,7 @@
 }
 
 .checkboxs label {
+  padding-left: 16px;
+  cursor: pointer;
   color: #bdbdbd;
 }
