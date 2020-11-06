@@ -14,18 +14,26 @@ export default {
   },
 } as Meta;
 
-const Template: Story<CheckboxProps> = (args) => <CheckboxComponent {...args} />;
+const Template: Story<CheckboxProps> = (args) => {
+  const [status, setStatus] = useState<boolean>(false);
 
-export const Default = Template.bind({});
-Default.args = {
-  status: false,
-  callback: function () {
-    console.log("callback arguments 에 Onchange Event 를 만들어서 넣어주세요.");
-  },
+  const changeCheckStatus = useCallback(() => {
+    const checked = status === true ? false : true;
+    setStatus(checked);
+  }, [status]);
+
+  args = {
+    ...args,
+    status: status,
+    callback: changeCheckStatus,
+  };
+
+  return <CheckboxComponent {...args} />;
 };
 
+export const Default = Template.bind({});
+
 Default.args = {
-  status: false,
   label: {
     text: "text",
     id: "checkbox",

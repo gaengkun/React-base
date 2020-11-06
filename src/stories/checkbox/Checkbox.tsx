@@ -1,7 +1,7 @@
 import React from "react";
+import styled from "styled-components";
 import "./checkbox.css";
 
-import styled from "styled-components";
 export interface CheckboxProps {
   /**
    * Is Checked State
@@ -23,7 +23,7 @@ export interface CheckboxProps {
   /**
    * Checkbox Label type Obejct
    * text: Label Text
-   * id: Label Htmlfor
+   * id: Label HtmlFor
    * position: Label position
    */
   label?: {

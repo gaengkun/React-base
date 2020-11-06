@@ -1,0 +1,8 @@
+.text {
+  display: flex;
+}
+
+.text.top,
+.text.bottom {
+  flex-direction: column;
+}
