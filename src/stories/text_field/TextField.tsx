@@ -5,9 +5,9 @@ import "./text_field.css";
 export interface TextFieldProps {
   state: string | number;
 
-  callback?(): void;
+  callback?(event: any): void;
 
-  type?: "text" | "number" | "phone" | "email";
+  type: "text" | "number" | "phone" | "email";
 
   name?: string;
 
@@ -27,15 +27,12 @@ export function TextField(props: TextFieldProps) {
   return (
     <div className={`text ${label && label.position}`}>
       {label && (label.position === "top" || label.position === "left") && <label>{label.text}</label>}
-      <input
-        style={{ ...style }}
-        type={`${type ? type : "text"}`}
-        value={state}
-        onChange={callback}
-        name={name}
-        placeholder={placeHolder}
-      />
+      <input style={{ ...style }} type={`${type}`} value={state} onChange={callback} name={name} placeholder={placeHolder} />
       {label && (label.position === "bottom" || label.position === "right") && <label>{label.text}</label>}
     </div>
   );
 }
+
+TextField.defaultProps = {
+  type: "text",
+};
