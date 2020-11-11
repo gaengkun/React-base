@@ -11,6 +11,9 @@ export default {
     borderColor: { control: "color" },
     fontColor: { control: "color" },
     arrowColor: { control: "color" },
+    hoverFontColor: { control: "color" },
+    optionCount: { control: "number" },
+    optionHeight: { control: "number" },
   },
 } as Meta;
 
@@ -26,6 +29,7 @@ const DefaultReducer = (state: StateType, action: ActionType) => {
         ...state,
         isOpen: false,
         selectIdx: action.idx!,
+        others: action.others,
       };
     default:
       return state;
@@ -47,21 +51,29 @@ const initialValue = {
     { value: 9, text: "j" },
     { value: 10, text: "k" },
   ],
-  selectIdx: 0,
+  selectIdx: 5,
 };
 
-const Template: Story<DropboxProps> = (args) => <DropboxComponent {...args} />;
+const Template: Story<DropboxProps> = (args) => {
+  const [state, dispatch] = useReducer(DefaultReducer, initialValue);
+
+  args = {
+    ...args,
+    state,
+    dispatch,
+  };
+
+  return (
+    <div style={{ height: args.height ? args.height * 4 + "px" : "auto" }}>
+      <DropboxComponent {...args} />
+    </div>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {
-  state: {
-    ...initialValue,
-  },
-  dispatch: () => {
-    console.log("hi");
-  },
   width: 100,
-  height: 20,
+  height: 40,
 };
 
 export const Basic = () => {

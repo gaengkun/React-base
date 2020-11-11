@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
 export type StateType = {
@@ -8,12 +8,14 @@ export type StateType = {
     text: string;
   }>;
   selectIdx: number;
+  others?: any;
 };
 
 export type ActionType = {
   type: "open" | "select";
   open?: boolean;
   idx?: number;
+  others?: any;
 };
 
 export interface DropboxProps {
@@ -38,6 +40,16 @@ export interface DropboxProps {
   height?: number;
 
   /**
+   * Dropbox Option Max View Count
+   */
+  optionCount?: number;
+
+  /**
+   * Dropbox Option Height
+   */
+  optionHeight?: number;
+
+  /**
    * Dropbox Border Color
    */
   borderColor?: string;
@@ -48,6 +60,12 @@ export interface DropboxProps {
   fontColor?: string;
 
   /**
+   * Dropbox Option Hover Color
+   */
+
+  hoverFontColor?: string;
+
+  /**
    * Dropbox Arrow Color
    */
 
@@ -56,6 +74,19 @@ export interface DropboxProps {
 
 export function DropboxComponent(props: DropboxProps) {
   const { state, dispatch } = props;
+
+  const OptionRef = useRef<any>(null);
+  const SelectRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (state.isOpen && OptionRef.current !== null && SelectRef.current !== null) {
+      if (props.height) {
+        OptionRef.current.scroll(0, state.selectIdx * props.height);
+      } else {
+        OptionRef.current.scroll(0, SelectRef.current.offsetHeight * state.selectIdx);
+      }
+    }
+  }, [state.isOpen]);
 
   return (
     <SelectBox {...props}>
@@ -71,17 +102,18 @@ export function DropboxComponent(props: DropboxProps) {
           onClick={(e) => {
             dispatch({ type: "open", open: !state.isOpen });
           }}
+          ref={SelectRef}
         >
           {state.boxList[state.selectIdx].text}
         </div>
-        <div className={`optionBox ${state.isOpen ? "open" : "close"}`}>
+        <div className={`optionBox ${state.isOpen ? "open" : "close"}`} ref={OptionRef}>
           {state.boxList.map((item: any, index: number) => {
             return (
               <div
-                className="option"
+                className={`option ${state.selectIdx === index && "selected"}`}
                 key={index}
                 onClick={(e) => {
-                  dispatch({ type: "select", idx: index });
+                  dispatch({ type: "select", idx: index, others: item });
                 }}
               >
                 {item.text}
@@ -102,6 +134,7 @@ const SelectBox = styled.div`
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+
   .selectModule {
     position: relative;
     display: flex;
@@ -159,7 +192,8 @@ const SelectBox = styled.div`
       top: 100%;
       width: 100%;
 
-      height: ${(props: any) => (props.optionCoutNumber ? props.optionCoutNumber : "300")}%;
+      height: ${(props: any) =>
+        props.optionCount ? 100 * props.optionCount + "%" : props.optionHeight ? props.optionHeight + "px" : "300%"};
 
       display: flex;
       position: absolute;
@@ -190,16 +224,21 @@ const SelectBox = styled.div`
       display: flex;
       align-items: center;
       width: 100%;
-      height: 40px;
+      height: ${(props: DropboxProps) => (props.height ? `${props.height}px` : "auto")};
       padding: 0px 20px;
       font-size: 16px;
       box-sizing: border-box;
       color: #757575;
       cursor: pointer;
 
+      &.selected {
+        font-weight: bold;
+        color: ${(props: any) => (props.hoverFontColor ? props.hoverFontColor : "#632beb")};
+      }
+
       &:hover {
         background: #f8f8f8;
-        color: ${(props: any) => (props.hoverFontcolor ? props.hoverFontcolor : "#632beb")};
+        color: ${(props: any) => (props.hoverFontColor ? props.hoverFontColor : "#632beb")};
       }
 
       &:active {
