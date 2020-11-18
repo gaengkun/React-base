@@ -86,7 +86,7 @@ export function DropboxComponent(props: DropboxProps) {
         OptionRef.current.scroll(0, SelectRef.current.offsetHeight * state.selectIdx);
       }
     }
-  }, [state.isOpen]);
+  }, [state, props]);
 
   return (
     <SelectBox {...props}>

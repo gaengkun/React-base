@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import styled from "styled-components";
 //context
 
@@ -61,7 +61,7 @@ export function ToastComponent(props: ToastPropsType) {
       setMsg("");
       setLast(false);
     }
-  }, [last, msgData]);
+  }, [last, msgData, setMsg, setLast]);
 
   return (
     <>
@@ -83,10 +83,6 @@ export function ToastComponent(props: ToastPropsType) {
 }
 
 const Toast = styled.div`
-  &.un {
-    display: none;
-  }
-
   position: fixed;
   bottom: 32px;
   left: 16px;

@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
 
-import { Story, Meta } from "@storybook/react/types-6-0";
+import { Meta } from "@storybook/react/types-6-0";
 
-import { ToastComponent, ToastPropsType } from "./Toast";
+import { ToastComponent } from "./Toast";
 
 export default {
   title: "Alert/Toast",

@@ -13,9 +13,9 @@
     "@types/react-dom": "^16.9.0",
     "@types/styled-components": "^5.1.4",
     "axios": "^0.20.0",
+    "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^10.0.0",
     "css-loader": "^5.0.0",
-    "jest": "^26.6.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-scripts": "3.4.3",
@@ -60,7 +60,6 @@
     "@storybook/node-logger": "^6.0.28",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "^6.0.28",
-    "babel-loader": "^8.1.0",
     "react-is": "^17.0.1"
   }
 }
