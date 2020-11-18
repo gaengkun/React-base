@@ -89,11 +89,15 @@ const Layer = styled.div`
     background-color: #fff;
     border-radius: 20px;
 
-    ${(props: any) =>
-      props.animation &&
-      css`
-        animation: ${props.animation.from} ${props.animation.sec ? props.animation.sec + "s" : 0.4 + "s"};
-      `}
+    ${(props: any) => {
+      return (
+        props.animation &&
+        css`
+          animation: ${props.animation.from} ${props.animation.sec ? props.animation.sec + "s" : 0.4 + "s"};
+        `
+      );
+    }}
+
     transform: translateY(-80%);
 
     .title {
@@ -114,6 +118,64 @@ const Layer = styled.div`
     font-size: 14px;
     font-weight: bold;
     color: #fff;
+  }
+
+  @keyframes TOP {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(-80%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes LEFT {
+    0% {
+      transform: translate(-100%, -80%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translate(0, -80%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes RIGHT {
+    0% {
+      transform: translate(100%, -80%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translate(0, -80%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes BOTTOM {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(-80%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes CENTER {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 `;
 
