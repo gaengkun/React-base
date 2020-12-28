@@ -37,3 +37,10 @@
   cursor: pointer;
   color: #bdbdbd;
 }
+
+.checkboxs label.left {
+  float: left;
+}
+.checkboxs label.right {
+  float: right;
+}

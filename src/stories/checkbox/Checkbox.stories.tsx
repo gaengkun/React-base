@@ -106,7 +106,7 @@ export const MultiCheckbox = () => {
         <CheckboxComponent
           status={allChecked}
           callback={changeAllCheckStatus}
-          label={{ id: "allcheckebox", text: "All Check", position: "right" }}
+          label={{ id: "allcheckebox", text: "All Check", position: "left" }}
         />
       </div>
 

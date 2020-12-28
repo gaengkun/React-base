@@ -25,9 +25,9 @@ export const Default = Template.bind({});
 Default.args = {
   state: "",
   label: {
-    position: "top",
+    position: "LEFT",
     text: "Email",
   },
-  style: { padding: "10px" },
-  placeHolder: "입력해 주세요.",
+  inputStyle: { padding: "10px" },
+  placeHolder: "Email을 입력해 주세요.",
 };

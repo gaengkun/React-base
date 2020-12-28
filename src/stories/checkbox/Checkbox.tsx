@@ -37,9 +37,8 @@ export function CheckboxComponent(props: CheckboxProps) {
   const { status, callback, size, backgroundColor, label } = props;
 
   return (
-    <>
-      {label && label.position === "left" && <label htmlFor={label.id}>{label.text}</label>}
-      <ChechboxWrap
+    <CheckboxWrap>
+      <Chechbox
         id={label && label.id}
         status={status}
         type="checkbox"
@@ -48,8 +47,12 @@ export function CheckboxComponent(props: CheckboxProps) {
         size={size}
         backgroundColor={backgroundColor}
       />
-      {label && label.position === "right" && <label htmlFor={label.id}>{label.text}</label>}
-    </>
+      {label && (
+        <label htmlFor={label.id} className={`${label.position}`}>
+          {label.text}
+        </label>
+      )}
+    </CheckboxWrap>
   );
 }
 
@@ -59,7 +62,22 @@ CheckboxComponent.defaultProps = {
   backgroundColor: "#632beb",
 };
 
-const ChechboxWrap = styled.input`
+const CheckboxWrap = styled.div`
+  align-items: center;
+  width: fit-content;
+
+  & > label {
+    &.left {
+      float: left;
+    }
+
+    &.right {
+      float: right;
+    }
+  }
+`;
+
+const Chechbox = styled.input`
   width: ${(props: CheckboxProps) => (props.size ? `${props.size}px` : "24px")};
   height: ${(props: CheckboxProps) => (props.size ? `${props.size}px` : "24px")};
   position: relative;
