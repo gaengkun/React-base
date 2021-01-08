@@ -4,7 +4,7 @@ import { useAsync } from "../custom-hook-base/custom-hook-async";
 
 import axios from "axios";
 let commonDiff = 200;
-let timer: NodeJS.Timeout;
+let timer: number;
 
 const initial: ScrollState = {
   page: 1,
@@ -25,9 +25,7 @@ const reducer = (state: ScrollState, action: ScrollAction) => {
 };
 
 async function getPosts(page: number) {
-  const response = await axios.get(
-    `https://jsonplaceholder.typicode.com/posts?userId=${page}`
-  );
+  const response = await axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${page}`);
 
   return response.data;
 }
@@ -41,19 +39,10 @@ function ScrollComponent() {
     let didFetch = false;
     const scrollEv = () => {
       timer = setTimeout(() => {
-        const windowHeight =
-          "innerHeight" in window
-            ? window.innerHeight
-            : document.documentElement.offsetHeight;
+        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
         const body = document.body;
         const html = document.documentElement;
-        const docHeight = Math.max(
-          body.scrollHeight,
-          body.offsetHeight,
-          html.clientHeight,
-          html.scrollHeight,
-          html.offsetHeight
-        );
+        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
         const windowBottom = windowHeight + window.pageYOffset;
         if (didFetch === false && result.loading === false) {
           if (docHeight - commonDiff < windowBottom) {
