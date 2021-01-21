@@ -5,19 +5,19 @@ import {
   NotGoodCase,
   UseStateCase,
   UseReducerCase,
-} from "./components/many-state-base";
-import ParentComponent from "./components/pure-component-base/parent";
-import UseCallbackBase from "./components/use-callback-base";
-import PropsParent from "./components/props-context-base/props-case/props-parent";
-import ContextParent from "./components/props-context-base/context-case";
-import UseCallbackExpreince from "./components/what-use-callback";
-import UseReducerComponent from "./components/use-reducer-base";
-import ManyInputBaseComponent from "./components/many-input-base";
-import ManyInputInspectionComponent from "./components/many-input-base/many-input-inspection";
+} from "./stories/many-state-base";
+import ParentComponent from "./stories/pure-component-base/parent";
+import UseCallbackBase from "./stories/use-callback-base";
+import PropsParent from "./stories/props-context-base/props-case/props-parent";
+import ContextParent from "./stories/props-context-base/context-case";
+import UseCallbackExpreince from "./stories/what-use-callback";
+import UseReducerComponent from "./stories/use-reducer-base";
+import ManyInputBaseComponent from "./stories/many-input-base";
+import ManyInputInspectionComponent from "./stories/many-input-base/many-input-inspection";
 
-import CustomHookTestComponent from "./components/custom-hook-base";
+import CustomHookTestComponent from "./stories/custom-hook-base";
 
-import ScrollComponent from "./components/common-component/scroll-component";
+import ScrollComponent from "./stories/common-component/scroll-component";
 function App() {
   return (
     <div className="App">
