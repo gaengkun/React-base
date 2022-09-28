@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from "@storybook/react/types-6-0";
 
@@ -36,3 +36,32 @@ Small.args = {
   size: "small",
   label: "Button",
 };
+
+export const SpinnerTemplate = () => {
+  const [loading, setLoading] = useState(false);
+  
+  return (
+    <div>
+      <Button label={"Button"} onClick={() => {
+        setLoading(true);
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000)
+      }}
+      useSpinner={true}
+      loading={loading}
+      >
+
+      </Button>
+    </div>
+  )
+}
+
+
+
+export const UseSpinner = Template.bind(SpinnerTemplate);
+UseSpinner.args = {
+  useSpinner: true,
+  loading: true
+}

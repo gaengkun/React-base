@@ -1,5 +1,7 @@
 import React from 'react';
+import Spinner from './Spinner';
 import './button.css';
+
 
 export interface ButtonProps {
   /**
@@ -22,6 +24,11 @@ export interface ButtonProps {
    * Optional click handler
    */
   onClick?: () => void;
+  /**
+   * Loading Spinner
+   */
+  loading?: boolean;
+  useSpinner?: boolean;
 }
 
 /**
@@ -35,6 +42,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const { useSpinner, loading } = props;
   return (
     <button
       type="button"
@@ -42,7 +50,16 @@ export const Button: React.FC<ButtonProps> = ({
       style={{ backgroundColor }}
       {...props}
     >
-      {label}
+      {
+        (useSpinner && loading) ? (
+          <Spinner />
+        ) : (
+          <>
+            {label}
+          </>
+        )
+      }
+      
     </button>
   );
 };
